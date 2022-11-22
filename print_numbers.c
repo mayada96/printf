@@ -7,8 +7,10 @@
  */
 int print_number(va_list args)
 {
-	int n, div, len;
 	unsigned int num;
+	int n;
+	int div;
+	int len;
 
 	n  = va_arg(args, int);
 	div = 1;
@@ -16,7 +18,7 @@ int print_number(va_list args)
 	if (n < 0)
 	{
 		len += _write_char('-');
-		num = n * -1;
+		num = -n;
 	}
 	else
 		num = n;
@@ -24,7 +26,7 @@ int print_number(va_list args)
 		div *= 10;
 	for (; div != 0; )
 	{
-		len += _write_char('0' + num / div);
+		len += _write_char('0' + (num / div));
 		num %= div;
 		div /= 10;
 	}
